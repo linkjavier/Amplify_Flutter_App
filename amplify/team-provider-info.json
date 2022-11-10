@@ -9,18 +9,24 @@
       "UnauthRoleName": "amplify-zitroconnectv1-dev-34039-unauthRole",
       "StackName": "amplify-zitroconnectv1-dev-34039",
       "StackId": "arn:aws:cloudformation:us-west-2:674765221293:stack/amplify-zitroconnectv1-dev-34039/0a9b25c0-5a8a-11ed-ac86-024ff7f2582b",
-      "AmplifyAppId": "d2u2z5ecgt7o7n"
+      "AmplifyAppId": "d2u2z5ecgt7o7n",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-zitroconnectv1-dev-34039-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
-        "HomeownerCreator": {
+        "homeownersLambda": {
           "deploymentBucketName": "amplify-zitroconnectv1-dev-34039-deployment",
-          "s3Key": "amplify-builds/HomeownerCreator-34307a5639364b6a4f58-build.zip"
-        },
-        "HomeownerReader": {}
+          "s3Key": "amplify-builds/homeownersLambda-6f354f6b6a7831763854-build.zip"
+        }
       },
       "storage": {
         "dynamoZitroConnect": {}
+      },
+      "auth": {
+        "zitroconnectv1": {}
+      },
+      "api": {
+        "homeownersApi": {}
       }
     }
   }
