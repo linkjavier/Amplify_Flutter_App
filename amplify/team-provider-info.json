@@ -17,16 +17,22 @@
         "homeownersLambda": {
           "deploymentBucketName": "amplify-zitroconnectv1-dev-34039-deployment",
           "s3Key": "amplify-builds/homeownersLambda-6f354f6b6a7831763854-build.zip"
+        },
+        "testLambda": {
+          "deploymentBucketName": "amplify-zitroconnectv1-dev-34039-deployment",
+          "s3Key": "amplify-builds/testLambda-61546a48677533487356-build.zip"
         }
       },
       "storage": {
-        "dynamoZitroConnect": {}
+        "dynamoZitroConnect": {},
+        "testTable": {}
       },
       "auth": {
         "zitroconnectv1": {}
       },
       "api": {
-        "homeownersApi": {}
+        "homeownersApi": {},
+        "testApi": {}
       }
     }
   }

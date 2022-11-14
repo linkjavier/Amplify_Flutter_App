@@ -7,16 +7,24 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
+        },
+        "testTable": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
         }
     },
     "function": {
-        "contractorsLambda": {
+        "homeownersLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "homeownersLambda": {
+        "testLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -36,6 +44,11 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "homeownersApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "testApi": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
