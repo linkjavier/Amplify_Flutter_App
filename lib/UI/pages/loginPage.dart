@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
 import 'package:zitro_connect_v1/amplifyconfiguration.dart';
+import 'package:zitro_connect_v1/widgets/login.dart';
 
 class EntryScreen extends StatefulWidget {
   const EntryScreen({super.key});
@@ -40,9 +41,9 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
-      body: Center(
-          child: Text(_amplifyConfigured ? 'Configured' : 'Not configured')),
-    );
+        backgroundColor: Colors.deepPurple,
+        body: Center(
+          child: _amplifyConfigured ? Login() : CircularProgressIndicator(),
+        ));
   }
 }
