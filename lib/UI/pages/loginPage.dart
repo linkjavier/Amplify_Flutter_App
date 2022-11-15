@@ -41,8 +41,9 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.red,
         body: Center(
+          // child: Image.asset('assets/icons/Zitro-Connect-Logo.png'),
           child: _amplifyConfigured ? Login() : CircularProgressIndicator(),
         ));
   }

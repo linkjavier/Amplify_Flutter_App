@@ -11,13 +11,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future<String> _onLogin(BuildContext context, LoginData data) async {
+    print(data);
+  }
+
+  Future<String> _onSignup(BuildContext context, LoginData data) async {
+    print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
       title: 'Zitro Connect',
-      onLogin: (_) => Future.value(''),
+      onLogin: (LoginData data) => _onLogin(context, data),
       onRecoverPassword: (_) => Future.value(''),
-      onSignup: (_) => Future.value(''),
+      onSignup: (LoginData data) => _onSignup(context, data),
       theme: LoginTheme(
         primaryColor: Theme.of(context).primaryColor,
       ),
