@@ -16,13 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagetestTableName": {
+    "storagedynamoZitroConnectName": {
       "Type": "String",
-      "Default": "storagetestTableName"
+      "Default": "storagedynamoZitroConnectName"
     },
-    "storagetestTableArn": {
+    "storagedynamoZitroConnectArn": {
       "Type": "String",
-      "Default": "storagetestTableArn"
+      "Default": "storagedynamoZitroConnectArn"
+    },
+    "storagedynamoZitroConnectStreamArn": {
+      "Type": "String",
+      "Default": "storagedynamoZitroConnectStreamArn"
     }
   },
   "Conditions": {
@@ -55,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "testLambda",
+            "contractorsLambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "testLambda",
+                  "contractorsLambda",
                   "-",
                   {
                     "Ref": "env"
@@ -77,6 +81,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_NAME": {
+              "Ref": "storagedynamoZitroConnectName"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_ARN": {
+              "Ref": "storagedynamoZitroConnectArn"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_STREAMARN": {
+              "Ref": "storagedynamoZitroConnectStreamArn"
             }
           }
         },
@@ -97,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "zitroconnectv1LambdaRolea61504d2",
+            "zitroconnectv1LambdaRoledae68d3e",
             {
               "Fn::Join": [
                 "",
                 [
-                  "zitroconnectv1LambdaRolea61504d2",
+                  "zitroconnectv1LambdaRoledae68d3e",
                   "-",
                   {
                     "Ref": "env"
@@ -168,28 +181,49 @@
                   }
                 ]
               }
-            },
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
                 "dynamodb:Scan",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem"
+                "dynamodb:Query"
               ],
               "Resource": [
                 {
-                  "Ref": "storagetestTableArn"
+                  "Ref": "storagedynamoZitroConnectArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagetestTableArn"
+                        "Ref": "storagedynamoZitroConnectArn"
                       },
                       "index/*"
                     ]

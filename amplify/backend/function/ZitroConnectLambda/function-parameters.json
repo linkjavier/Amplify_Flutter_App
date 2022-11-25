@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "storage": {
+      "dynamoZitroConnect": [
+        "create",
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

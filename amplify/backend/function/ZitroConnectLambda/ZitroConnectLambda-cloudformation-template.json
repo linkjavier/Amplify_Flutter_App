@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda Function resource stack creation using Amplify CLI",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.3.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -23,6 +23,10 @@
     "storagedynamoZitroConnectArn": {
       "Type": "String",
       "Default": "storagedynamoZitroConnectArn"
+    },
+    "storagedynamoZitroConnectStreamArn": {
+      "Type": "String",
+      "Default": "storagedynamoZitroConnectStreamArn"
     }
   },
   "Conditions": {
@@ -55,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "homeownersLambda",
+            "ZitroConnectLambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "homeownersLambda",
+                  "ZitroConnectLambda",
                   "-",
                   {
                     "Ref": "env"
@@ -77,6 +81,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_NAME": {
+              "Ref": "storagedynamoZitroConnectName"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_ARN": {
+              "Ref": "storagedynamoZitroConnectArn"
+            },
+            "STORAGE_DYNAMOZITROCONNECT_STREAMARN": {
+              "Ref": "storagedynamoZitroConnectStreamArn"
             }
           }
         },
@@ -97,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "zitroconnectv1LambdaRole101eea45",
+            "zitroconnectv1LambdaRolec88c8e1e",
             {
               "Fn::Join": [
                 "",
                 [
-                  "zitroconnectv1LambdaRole101eea45",
+                  "zitroconnectv1LambdaRolec88c8e1e",
                   "-",
                   {
                     "Ref": "env"
@@ -168,17 +181,38 @@
                   }
                 ]
               }
-            },
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
                 "dynamodb:Scan",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem"
+                "dynamodb:Query"
               ],
               "Resource": [
                 {

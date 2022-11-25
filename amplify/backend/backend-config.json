@@ -3,14 +3,10 @@
     "dynamoZitroConnect": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
-    },
-    "testTable": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
-    "homeownersLambda": {
+    "ZitroConnectLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -20,31 +16,25 @@
           "resourceName": "dynamoZitroConnect",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
+            "Arn",
+            "StreamArn"
+          ]
         }
       ]
     },
-    "testLambda": {
+    "contractorsLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "testTable",
+          "resourceName": "dynamoZitroConnect",
           "attributes": [
             "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
+            "Arn",
+            "StreamArn"
+          ]
         }
       ]
     }
@@ -76,27 +66,21 @@
     }
   },
   "api": {
-    "homeownersApi": {
+    "ZitroConnectApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "homeownersLambda",
+          "resourceName": "ZitroConnectLambda",
           "attributes": [
             "Name",
             "Arn"
           ]
-        }
-      ]
-    },
-    "testApi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
+        },
         {
           "category": "function",
-          "resourceName": "testLambda",
+          "resourceName": "contractorsLambda",
           "attributes": [
             "Name",
             "Arn"

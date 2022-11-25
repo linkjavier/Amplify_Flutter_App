@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/homeowners": {
+      "name": "/homeowners",
+      "lambdaFunction": "ZitroConnectLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/contractors": {
+      "name": "/contractors",
+      "lambdaFunction": "contractorsLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

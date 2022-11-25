@@ -7,24 +7,16 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
-        },
-        "testTable": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
         }
     },
     "function": {
-        "homeownersLambda": {
+        "ZitroConnectLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "testLambda": {
+        "contractorsLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -43,12 +35,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "homeownersApi": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "testApi": {
+        "ZitroConnectApi": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

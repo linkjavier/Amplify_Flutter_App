@@ -40,4 +40,6 @@ $ amplify status
 homewners API
 REST API endpoint: https://2341jzc4hc.execute-api.us-west-2.amazonaws.com/dev
 
+https://h5vw9hnyhk.execute-api.us-west-2.amazonaws.com/dev/homeowners
+
 ================

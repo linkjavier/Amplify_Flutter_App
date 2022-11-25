@@ -44,7 +44,9 @@ class _EntryScreenState extends State<EntryScreen> {
         backgroundColor: Colors.red,
         body: Center(
           // child: Image.asset('assets/icons/Zitro-Connect-Logo.png'),
-          child: _amplifyConfigured ? Login() : CircularProgressIndicator(),
+          child: _amplifyConfigured
+              ? const Login()
+              : const CircularProgressIndicator(),
         ));
   }
 }
