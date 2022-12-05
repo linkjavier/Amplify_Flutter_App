@@ -5,6 +5,8 @@ import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
 import 'package:zitro_connect_v1/amplifyconfiguration.dart';
 import 'package:zitro_connect_v1/widgets/login.dart';
 
+import '../../constants.dart';
+
 class EntryScreen extends StatefulWidget {
   const EntryScreen({super.key});
 
@@ -41,6 +43,15 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("Siguiente"),
+          actions: [
+            InkWell(
+                onTap: () => Navigator.pushNamed(context, ROUTE_HOME),
+                child: const Padding(
+                    padding: EdgeInsets.all(10.0), child: Icon(Icons.add)))
+          ],
+        ),
         backgroundColor: Colors.red,
         body: Center(
           // child: Image.asset('assets/icons/Zitro-Connect-Logo.png'),
