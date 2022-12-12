@@ -34,11 +34,13 @@ dependencies:
   amplify_auth_cognito: ^0.6.0
   amplify_datastore: ^0.6.0
   amplify_flutter: ^0.6.0
+  amplify_authenticator:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_login: ^4.1.0
+  camera: ^0.10.0+4
 
 dev_dependencies:
 

@@ -1,10 +1,10 @@
+import 'package:amplify_api/amplify_api.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_analytics_pinpoint/amplify_analytics_pinpoint.dart';
 import 'package:zitro_connect_v1/amplifyconfiguration.dart';
 import 'package:zitro_connect_v1/widgets/login.dart';
-
 import '../../constants.dart';
 
 class EntryScreen extends StatefulWidget {
@@ -21,30 +21,31 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   void initState() {
     super.initState();
-    _configureAmplify();
+    // _configureAmplify();
   }
 
-  void _configureAmplify() async {
-    final auth = AmplifyAuthCognito();
-    final analytics = AmplifyAnalyticsPinpoint();
+  // void _configureAmplify() async {
+  //   final auth = AmplifyAuthCognito();
+  //   final analytics = AmplifyAnalyticsPinpoint();
+  //   final api = AmplifyAPI();
 
-    try {
-      amplify.addPlugins([auth, analytics]);
-      await amplify.configure(amplifyconfig);
+  //   try {
+  //     amplify.addPlugins([auth, analytics, api]);
+  //     await amplify.configure(amplifyconfig);
 
-      setState(() {
-        _amplifyConfigured = true;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
+  //     setState(() {
+  //       _amplifyConfigured = true;
+  //     });
+  //   } on Exception catch (e) {
+  //     print('Could not configure Amplify: $e');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Siguiente"),
+          title: const Text("Test API Page"),
           actions: [
             InkWell(
                 onTap: () => Navigator.pushNamed(context, ROUTE_HOME),

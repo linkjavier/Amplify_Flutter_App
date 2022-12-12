@@ -13,9 +13,9 @@ import 'package:zitro_connect_v1/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyAppState());
 
-    // Verify that our counter starts at 0.
+    // Verify that our counter starts at 0.ß
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
