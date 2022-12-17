@@ -76,6 +76,8 @@ PODS:
   - AWSPluginsCore (1.28.2):
     - Amplify (= 1.28.2)
     - AWSCore (~> 2.28.0)
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - ObjectMapper (4.2.0)
   - SQLite.swift (0.13.2):
@@ -94,6 +96,7 @@ DEPENDENCIES:
   - amplify_core (from `.symlinks/plugins/amplify_core/ios`)
   - amplify_datastore (from `.symlinks/plugins/amplify_datastore/ios`)
   - amplify_flutter_ios (from `.symlinks/plugins/amplify_flutter_ios/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - Flutter (from `Flutter`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -128,6 +131,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/amplify_datastore/ios"
   amplify_flutter_ios:
     :path: ".symlinks/plugins/amplify_flutter_ios/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   Flutter:
     :path: Flutter
   url_launcher_ios:
@@ -150,6 +155,7 @@ SPEC CHECKSUMS:
   AWSMobileClient: c898658a4d15e64e07d39c7dc6354fd3ea3055a9
   AWSPinpoint: 2c41ce0ff69c6e5621c330c62d504807e4ce534a
   AWSPluginsCore: 0842f0ec7df892adddeea71b05c8e9bee84b2eb0
+  camera_avfoundation: 07c77549ea54ad95d8581be86617c094a46280d9
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef

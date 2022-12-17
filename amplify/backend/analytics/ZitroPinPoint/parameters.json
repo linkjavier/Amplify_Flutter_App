@@ -1,0 +1,21 @@
+{
+    "appName": "ZitroPinPoint",
+    "roleName": "pinpointLambdaRole03f4406e",
+    "cloudformationPolicyName": "cloudformationPolicy03f4406e",
+    "cloudWatchPolicyName": "cloudWatchPolicy03f4406e",
+    "pinpointPolicyName": "pinpointPolicy03f4406e",
+    "authPolicyName": "pinpoint_amplify_03f4406e",
+    "unauthPolicyName": "pinpoint_amplify_03f4406e",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

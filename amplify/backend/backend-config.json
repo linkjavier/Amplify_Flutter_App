@@ -88,5 +88,11 @@
         }
       ]
     }
+  },
+  "analytics": {
+    "ZitroPinPoint": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }
