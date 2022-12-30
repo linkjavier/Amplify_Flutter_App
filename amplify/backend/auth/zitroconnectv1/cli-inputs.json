@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "zitroconnectv1_identitypool_564a4414",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "zitroc564a4414",
     "userPoolName": "zitroconnectv1_userpool_564a4414",
     "autoVerifiedAttributes": [
@@ -37,6 +37,24 @@
     "resourceName": "zitroconnectv1",
     "sharedId": "564a4414",
     "serviceName": "Cognito",
-    "useDefault": "manual"
+    "useDefault": "default",
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "useEnabledMfas": true,
+    "dependsOn": [],
+    "hostedUI": false,
+    "userPoolGroupList": [],
+    "authProviders": []
   }
-} 
+}

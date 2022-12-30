@@ -43,6 +43,12 @@ class HomeState extends State<Home> {
       final restOperation = Amplify.API.get(restOptions: options);
       final response = await restOperation.response;
       print('GET call succeeded: ${response.body}');
+
+      print("Entramos al POST 84 de Contractors");
+      const options2 = RestOptions(path: '/contractors');
+      final restOperation2 = Amplify.API.get(restOptions: options2);
+      final response2 = await restOperation2.response;
+      print('GET call succeeded: ${response2.body}');
     } on ApiException catch (e) {
       print('GET call failed: $e');
     }

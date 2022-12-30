@@ -31,62 +31,46 @@ app.use(function(req, res, next) {
   next()
 });
 
+const AWS = require('aws-sdk')
+const docClient = new AWS.DynamoDB.DocumentClient();
 
-/**********************
- * Example get method *
- **********************/
+function id () {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
 
-app.get('/contractors', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/contractors', function (req, res) {
+  var params = {
+    TableName : 'contractors',
+  };
+  console.log({ params });
+  try {
+    docClient.scan(params, function (err, data) {
+      if (err) res.json({ err });
+      else res.json({ data });
+    });
+  } catch (err) {
+    console.log("2", { err });
+    res.json({ err });
+  }
 });
-
-app.get('/contractors/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
-
-/****************************
-* Example post method *
-****************************/
 
 app.post('/contractors', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  console.log(req);
+
+  var params = {
+    TableName : 'contractors',
+    Item: {
+      id: id(),
+      name: 'Javier',
+      message:'Test OK'
+    }
+  }
+  docClient.put(params, function(err, data) {
+    if (err) res.json( {err})
+    else res.json({ success: 'Contact created successfully!' })
+  })
 });
 
-app.post('/contractors/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example put method *
-****************************/
-
-app.put('/contractors', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/contractors/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example delete method *
-****************************/
-
-app.delete('/contractors', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/contractors/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
 
 app.listen(3000, function() {
     console.log("App started")

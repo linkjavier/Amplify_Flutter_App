@@ -42,4 +42,9 @@ REST API endpoint: https://2341jzc4hc.execute-api.us-west-2.amazonaws.com/dev
 
 https://h5vw9hnyhk.execute-api.us-west-2.amazonaws.com/dev/homeowners
 
+==  Roles ==
+The lambda function are using the IAM Role with full dynamoDB Full Access Permission:
+
+zitroconnectv1LambdaRolec88c8e1e-dev
+
 ================

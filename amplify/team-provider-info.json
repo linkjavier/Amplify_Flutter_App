@@ -14,7 +14,14 @@
     },
     "categories": {
       "storage": {
-        "dynamoZitroConnect": {}
+        "dynamoZitroConnect": {},
+        "services": {
+          "tableName": "services",
+          "region": "us-west-2",
+          "arn": "arn:aws:dynamodb:us-west-2:674765221293:table/services",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        }
       },
       "auth": {
         "zitroconnectv1": {}
@@ -26,8 +33,9 @@
         },
         "contractorsLambda": {
           "deploymentBucketName": "amplify-zitroconnectv1-dev-34039-deployment",
-          "s3Key": "amplify-builds/contractorsLambda-4a54322f4d517244532f-build.zip"
-        }
+          "s3Key": "amplify-builds/contractorsLambda-43762b4341762b38644f-build.zip"
+        },
+        "servicesLambda": {}
       },
       "api": {
         "ZitroConnectApi": {}
